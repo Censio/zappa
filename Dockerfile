@@ -14,6 +14,8 @@ WORKDIR /var/task
 RUN virtualenv /var/task/docker_env && \
     source /var/task/docker_env/bin/activate && \
     pip install -U pip && \
+    pip install --upgrade setuptools && \
+    pip install Cython numpy==1.9.2 pandas pytest && \
     deactivate
 
 CMD ["tail", "-f", "/dev/null"]

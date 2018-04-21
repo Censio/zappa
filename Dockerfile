@@ -5,7 +5,7 @@ MAINTAINER "Aviv Giladi" <aviv@cens.io>
 COPY yum.conf /etc/yum.conf
 
 RUN yum clean all && \
-    yum -y install python27-devel python27-virtualenv vim gcc lapack-devel blas-devel atlas-devel libyaml-devel libffi-devel freetype-devel zlib libpng-static libpng-devel && \
+    yum -y install python27-devel python27-virtualenv vim gcc lapack-devel blas-devel atlas-devel geos geos-devel libyaml-devel libffi-devel freetype-devel zlib libpng-static libpng-devel && \
     pip install -I pip==7.1.2 && \
     pip install -U zappa
 

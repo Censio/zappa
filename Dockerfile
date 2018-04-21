@@ -1,22 +1,19 @@
 FROM lambci/lambda:build
 
-MAINTAINER "Daniel Whatmuff" <danielwhatmuff@gmail.com>
+MAINTAINER "Aviv Giladi" <aviv@cens.io>
 
 COPY yum.conf /etc/yum.conf
 
 RUN yum clean all && \
-    yum -y install python27-devel python27-virtualenv vim postgresql postgresql-devel mysql mysql-devel gcc lapack-devel blas-devel libyaml-devel libffi-devel freetype-devel zlib libpng-static libpng-devel && \
-    yum --enablerepo=epel -y install hdf5-devel && \
+    yum -y install python27-devel python27-virtualenv vim gcc lapack-devel blas-devel atlas-devel libyaml-devel libffi-devel freetype-devel zlib libpng-static libpng-devel && \
     pip install -I pip==7.1.2 && \
-    pip install -U zappa mysql-python
+    pip install -U zappa
 
 WORKDIR /var/task
 
-RUN virtualenv /var/venv && \
-    source /var/venv/bin/activate && \
+RUN virtualenv /var/task/docker_env && \
+    source /var/task/docker_env/bin/activate && \
     pip install -U pip && \
     deactivate
 
-COPY bashrc /root/.bashrc
-
-CMD ["zappa"]
+CMD ["tail", "-f", "/dev/null"]

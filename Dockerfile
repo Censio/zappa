@@ -11,11 +11,11 @@ RUN yum clean all && \
 
 WORKDIR /var/task
 
-RUN virtualenv /var/task/docker_env && \
-    source /var/task/docker_env/bin/activate && \
+RUN virtualenv /var/venv && \
+    source /var/venv/bin/activate && \
     pip install -U pip && \
     pip install --upgrade setuptools && \
-    pip install Cython numpy==1.9.2 pandas pytest && \
+    pip install Cython numpy==1.9.2 pandas==0.16.2 pytest && \
     deactivate
 
 CMD ["tail", "-f", "/dev/null"]

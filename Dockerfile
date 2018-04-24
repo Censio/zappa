@@ -21,6 +21,4 @@ RUN virtualenv /var/venv && \
 
 CMD ["tail", "-f", "/dev/null"]
 
-
-
-pip install -I pip==7.1.2 && pip install --upgrade setuptools && pip install zappa && pip install Cython numpy==1.9.2 pandas==0.16.2 pytest && pip install .
+#pip install -I pip==7.1.2 && pip install --upgrade setuptools && pip install zappa && pip install Cython numpy==1.9.2 pandas==0.16.2 pytest && pip install .
